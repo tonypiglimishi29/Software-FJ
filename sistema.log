@@ -1,0 +1,1433 @@
+2026-11-21 18:27:40,638 | INFO | Inicio 01 | Alta de cliente
+2026-11-21 18:27:40,638 | INFO | Fin de la operación 01
+2026-11-21 18:27:40,638 | INFO | 01 [OK] Alta de cliente | Ana
+2026-11-21 18:27:40,638 | INFO | Inicio 02 | Nombre vacío
+2026-11-21 18:27:40,638 | ERROR | Operación rechazada: Nombre vacío
+Traceback (most recent call last):
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/main.py", line 44, in simular
+    resultado = accion()
+                ^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/main.py", line 17, in <lambda>
+    ("Nombre vacío", lambda: sistema.registrar_cliente("102", " "), DatoInvalido),
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/modelo.py", line 176, in registrar_cliente
+    cliente = Cliente(documento, nombre)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/modelo.py", line 59, in __init__
+    self.__nombre = texto(nombre, "nombre")
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/modelo.py", line 24, in texto
+    raise DatoInvalido(f"El campo {campo} es obligatorio.")
+modelo.DatoInvalido: El campo nombre es obligatorio.
+2026-11-21 18:27:40,640 | INFO | Fin de la operación 02
+2026-11-21 18:27:40,640 | INFO | 02 [OK] Nombre vacío | El campo nombre es obligatorio.
+2026-11-21 18:27:40,640 | INFO | Inicio 03 | Documento duplicado
+2026-11-21 18:27:40,640 | ERROR | Operación rechazada: Documento duplicado
+Traceback (most recent call last):
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/main.py", line 44, in simular
+    resultado = accion()
+                ^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/main.py", line 18, in <lambda>
+    ("Documento duplicado", lambda: sistema.registrar_cliente("101", "Luz"), DatoInvalido),
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/modelo.py", line 178, in registrar_cliente
+    raise DatoInvalido("El documento ya está registrado.")
+modelo.DatoInvalido: El documento ya está registrado.
+2026-11-21 18:27:40,641 | INFO | Fin de la operación 03
+2026-11-21 18:27:40,641 | INFO | 03 [OK] Documento duplicado | El documento ya está registrado.
+2026-11-21 18:27:40,641 | INFO | Inicio 04 | Alta de sala
+2026-11-21 18:27:40,641 | INFO | Fin de la operación 04
+2026-11-21 18:27:40,641 | INFO | 04 [OK] Alta de sala | Sala Norte (8 personas)
+2026-11-21 18:27:40,641 | INFO | Inicio 05 | Alta de equipos
+2026-11-21 18:27:40,641 | INFO | Fin de la operación 05
+2026-11-21 18:27:40,641 | INFO | 05 [OK] Alta de equipos | Alquiler de portátiles (2 unidades)
+2026-11-21 18:27:40,641 | INFO | Inicio 06 | Alta de asesoría
+2026-11-21 18:27:40,641 | INFO | Fin de la operación 06
+2026-11-21 18:27:40,641 | INFO | 06 [OK] Alta de asesoría | Asesoría de redes
+2026-11-21 18:27:40,641 | INFO | Inicio 07 | Tarifa ilegible
+2026-11-21 18:27:40,641 | ERROR | Operación rechazada: Tarifa ilegible
+Traceback (most recent call last):
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/modelo.py", line 31, in numero
+    resultado = Decimal(str(valor))
+                ^^^^^^^^^^^^^^^^^^^
+decimal.InvalidOperation: [<class 'decimal.ConversionSyntax'>]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/main.py", line 44, in simular
+    resultado = accion()
+                ^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/main.py", line 22, in <lambda>
+    ("Tarifa ilegible", lambda: sistema.agregar_servicio(Sala("Sur", "abc", 5)), DatoInvalido),
+                                                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/modelo.py", line 100, in __init__
+    super().__init__(nombre, tarifa)
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/modelo.py", line 72, in __init__
+    self.tarifa = numero(tarifa, "tarifa", Decimal("0.01"), 100000000)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/modelo.py", line 33, in numero
+    raise DatoInvalido(f"{campo} debe ser numérico.") from causa
+modelo.DatoInvalido: tarifa debe ser numérico.
+2026-11-21 18:27:40,641 | INFO | Fin de la operación 07
+2026-11-21 18:27:40,641 | INFO | 07 [OK] Tarifa ilegible | tarifa debe ser numérico.
+2026-11-21 18:27:40,641 | INFO | Inicio 08 | Unidades faltantes
+2026-11-21 18:27:40,641 | ERROR | Operación rechazada: Unidades faltantes
+Traceback (most recent call last):
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/modelo.py", line 31, in numero
+    resultado = Decimal(str(valor))
+                ^^^^^^^^^^^^^^^^^^^
+decimal.InvalidOperation: [<class 'decimal.ConversionSyntax'>]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/main.py", line 44, in simular
+    resultado = accion()
+                ^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/main.py", line 23, in <lambda>
+    ("Unidades faltantes", lambda: sistema.agregar_servicio(Equipo("monitor", 9000, None)), DatoInvalido),
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/modelo.py", line 113, in __init__
+    self.unidades = entero(unidades, "unidades")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/modelo.py", line 42, in entero
+    valor = numero(valor, campo, 1, 10000)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/modelo.py", line 33, in numero
+    raise DatoInvalido(f"{campo} debe ser numérico.") from causa
+modelo.DatoInvalido: unidades debe ser numérico.
+2026-11-21 18:27:40,642 | INFO | Fin de la operación 08
+2026-11-21 18:27:40,642 | INFO | 08 [OK] Unidades faltantes | unidades debe ser numérico.
+2026-11-21 18:27:40,642 | INFO | Inicio 09 | Duración cero
+2026-11-21 18:27:40,642 | ERROR | Operación rechazada: Duración cero
+Traceback (most recent call last):
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/main.py", line 44, in simular
+    resultado = accion()
+                ^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/main.py", line 24, in <lambda>
+    ("Duración cero", lambda: sistema.reservar(clientes[0], servicios[0], 0), DatoInvalido),
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/modelo.py", line 191, in reservar
+    reserva = Reserva(cliente, servicio, horas)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/modelo.py", line 140, in __init__
+    self.horas = numero(horas, "horas", Decimal("0.01"), 10000)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/modelo.py", line 35, in numero
+    raise DatoInvalido(f"{campo} debe ser finito y al menos {minimo}.")
+modelo.DatoInvalido: horas debe ser finito y al menos 0.01.
+2026-11-21 18:27:40,642 | INFO | Fin de la operación 09
+2026-11-21 18:27:40,642 | INFO | 09 [OK] Duración cero | horas debe ser finito y al menos 0.01.
+2026-11-21 18:27:40,642 | INFO | Inicio 10 | Cliente sin registrar
+2026-11-21 18:27:40,642 | ERROR | Operación rechazada: Cliente sin registrar
+Traceback (most recent call last):
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/main.py", line 44, in simular
+    resultado = accion()
+                ^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/main.py", line 25, in <lambda>
+    ("Cliente sin registrar", lambda: sistema.reservar(Cliente("999", "Leo"), servicios[0], 1), ReservaInvalida),
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/modelo.py", line 190, in reservar
+    raise ReservaInvalida("El cliente y el servicio deben estar registrados.")
+modelo.ReservaInvalida: El cliente y el servicio deben estar registrados.
+2026-11-21 18:27:40,642 | INFO | Fin de la operación 10
+2026-11-21 18:27:40,642 | INFO | 10 [OK] Cliente sin registrar | El cliente y el servicio deben estar registrados.
+2026-11-21 18:27:40,642 | INFO | Inicio 11 | Confirmar sala
+2026-11-21 18:27:40,642 | INFO | Fin de la operación 11
+2026-11-21 18:27:40,642 | INFO | 11 [OK] Confirmar sala | Sala Norte (8 personas) | Ana | confirmada
+2026-11-21 18:27:40,642 | INFO | Inicio 12 | Sala ocupada
+2026-11-21 18:27:40,642 | ERROR | Operación rechazada: Sala ocupada
+Traceback (most recent call last):
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/main.py", line 44, in simular
+    resultado = accion()
+                ^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/main.py", line 27, in <lambda>
+    ("Sala ocupada", lambda: sistema.reservar(clientes[0], servicios[0], 1), ServicioOcupado),
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/modelo.py", line 192, in reservar
+    reserva.confirmar()
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/modelo.py", line 146, in confirmar
+    self.servicio.ocupar(self)
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/modelo.py", line 77, in ocupar
+    raise ServicioOcupado(f"{self.nombre} ya está reservado.")
+modelo.ServicioOcupado: Norte ya está reservado.
+2026-11-21 18:27:40,643 | INFO | Fin de la operación 12
+2026-11-21 18:27:40,643 | INFO | 12 [OK] Sala ocupada | Norte ya está reservado.
+2026-11-21 18:27:40,643 | INFO | Inicio 13 | Cancelar reserva
+2026-11-21 18:27:40,643 | INFO | Fin de la operación 13
+2026-11-21 18:27:40,643 | INFO | 13 [OK] Cancelar reserva | Operación completada
+2026-11-21 18:27:40,643 | INFO | Inicio 14 | Repetir cancelación
+2026-11-21 18:27:40,643 | ERROR | Operación rechazada: Repetir cancelación
+Traceback (most recent call last):
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/main.py", line 44, in simular
+    resultado = accion()
+                ^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/main.py", line 29, in <lambda>
+    ("Repetir cancelación", lambda: reservas[0].cancelar(), ReservaInvalida),
+                                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/modelo.py", line 151, in cancelar
+    raise ReservaInvalida(f"No se puede cancelar una reserva {self.estado}.")
+modelo.ReservaInvalida: No se puede cancelar una reserva cancelada.
+2026-11-21 18:27:40,643 | INFO | Fin de la operación 14
+2026-11-21 18:27:40,643 | INFO | 14 [OK] Repetir cancelación | No se puede cancelar una reserva cancelada.
+2026-11-21 18:27:40,643 | INFO | Inicio 15 | Volver a reservar la sala
+2026-11-21 18:27:40,643 | INFO | Fin de la operación 15
+2026-11-21 18:27:40,643 | INFO | 15 [OK] Volver a reservar la sala | Sala Norte (8 personas) | Ana | confirmada
+2026-11-21 18:27:40,643 | INFO | Inicio 16 | Descuento fuera de rango
+2026-11-21 18:27:40,643 | ERROR | Operación rechazada: Descuento fuera de rango
+Traceback (most recent call last):
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/main.py", line 44, in simular
+    resultado = accion()
+                ^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/main.py", line 31, in <lambda>
+    ("Descuento fuera de rango", lambda: reservas[1].procesar(descuento=120), DatoInvalido),
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/modelo.py", line 159, in procesar
+    total = self.servicio.calcular_costo(self.horas, **ajustes)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/modelo.py", line 92, in calcular_costo
+    rebaja = numero(descuento, "descuento", 0, 100) / 100
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/8604edf9b22e/entrega/Software-FJ/modelo.py", line 37, in numero
+    raise DatoInvalido(f"{campo} supera el máximo de {maximo}.")
+modelo.DatoInvalido: descuento supera el máximo de 100.
+2026-11-21 18:27:40,643 | INFO | Fin de la operación 16
+2026-11-21 18:27:40,643 | INFO | 16 [OK] Descuento fuera de rango | descuento supera el máximo de 100.
+2026-11-21 18:27:40,643 | INFO | Inicio 17 | Procesar sala con descuento e impuesto
+2026-11-21 18:27:40,643 | INFO | Fin de la operación 17
+2026-11-21 18:27:40,643 | INFO | 17 [OK] Procesar sala con descuento e impuesto | 42840.00
+2026-11-21 18:27:40,643 | INFO | Inicio 18 | Reservar equipos
+2026-11-21 18:27:40,643 | INFO | Fin de la operación 18
+2026-11-21 18:27:40,643 | INFO | 18 [OK] Reservar equipos | Alquiler de portátiles (2 unidades) | Ana | confirmada
+2026-11-21 18:27:40,643 | INFO | Inicio 19 | Procesar dos equipos por tres horas
+2026-11-21 18:27:40,643 | INFO | Fin de la operación 19
+2026-11-21 18:27:40,643 | INFO | 19 [OK] Procesar dos equipos por tres horas | 36000.00
+2026-11-21 18:27:40,643 | INFO | Inicio 20 | Reservar asesoría
+2026-11-21 18:27:40,643 | INFO | Fin de la operación 20
+2026-11-21 18:27:40,643 | INFO | 20 [OK] Reservar asesoría | Asesoría de redes | Ana | confirmada
+2026-11-21 18:27:40,643 | INFO | Inicio 21 | Procesar asesoría con preparación
+2026-11-21 18:27:40,643 | INFO | Fin de la operación 21
+2026-11-21 18:27:40,643 | INFO | 21 [OK] Procesar asesoría con preparación | 70000.00
+2026-11-21 18:27:40,643 | INFO | Inicio 22 | Verificar registros tras los errores
+2026-11-21 18:27:40,643 | INFO | Fin de la operación 22
+2026-11-21 18:27:40,643 | INFO | 22 [OK] Verificar registros tras los errores | (1, 3, ['cancelada', 'procesada', 'procesada', 'procesada'])
+2026-11-21 18:27:40,643 | INFO | 22/22 simulaciones verificadas.
+2026-11-21 19:08:22,231 | INFO | Inicio 01 | Alta de cliente
+2026-11-21 19:08:22,232 | INFO | Fin de la operación 01
+2026-11-21 19:08:22,232 | INFO | 01 [OK] Alta de cliente | Ana
+2026-11-21 19:08:22,232 | INFO | Inicio 02 | Nombre vacío
+2026-11-21 19:08:22,232 | ERROR | Operación rechazada: Nombre vacío
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 16, in <lambda>
+    ("Nombre vacío", lambda: sistema.registrar_cliente("102", " "), DatoInvalido),
+                             ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 176, in registrar_cliente
+    cliente = Cliente(documento, nombre)
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 59, in __init__
+    self.__nombre = texto(nombre, "nombre")
+                    ~~~~~^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 24, in texto
+    raise DatoInvalido(f"El campo {campo} es obligatorio.")
+modelo.DatoInvalido: El campo nombre es obligatorio.
+2026-11-21 19:08:23,186 | INFO | Fin de la operación 02
+2026-11-21 19:08:23,186 | INFO | 02 [OK] Nombre vacío | El campo nombre es obligatorio.
+2026-11-21 19:08:23,187 | INFO | Inicio 03 | Documento duplicado
+2026-11-21 19:08:23,187 | ERROR | Operación rechazada: Documento duplicado
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 17, in <lambda>
+    ("Documento duplicado", lambda: sistema.registrar_cliente("101", "Luz"), DatoInvalido),
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 178, in registrar_cliente
+    raise DatoInvalido("El documento ya está registrado.")
+modelo.DatoInvalido: El documento ya está registrado.
+2026-11-21 19:08:23,188 | INFO | Fin de la operación 03
+2026-11-21 19:08:23,188 | INFO | 03 [OK] Documento duplicado | El documento ya está registrado.
+2026-11-21 19:08:23,189 | INFO | Inicio 04 | Alta de sala
+2026-11-21 19:08:23,190 | INFO | Fin de la operación 04
+2026-11-21 19:08:23,191 | INFO | 04 [OK] Alta de sala | Sala Norte (8 personas)
+2026-11-21 19:08:23,191 | INFO | Inicio 05 | Alta de equipos
+2026-11-21 19:08:23,191 | INFO | Fin de la operación 05
+2026-11-21 19:08:23,191 | INFO | 05 [OK] Alta de equipos | Alquiler de portátiles (2 unidades)
+2026-11-21 19:08:23,191 | INFO | Inicio 06 | Alta de asesoría
+2026-11-21 19:08:23,191 | INFO | Fin de la operación 06
+2026-11-21 19:08:23,191 | INFO | 06 [OK] Alta de asesoría | Asesoría de redes
+2026-11-21 19:08:23,192 | INFO | Inicio 07 | Tarifa ilegible
+2026-11-21 19:08:23,192 | ERROR | Operación rechazada: Tarifa ilegible
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 31, in numero
+    resultado = Decimal(str(valor))
+decimal.InvalidOperation: [<class 'decimal.ConversionSyntax'>]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 21, in <lambda>
+    ("Tarifa ilegible", lambda: sistema.agregar_servicio(Sala("Sur", "abc", 5)), DatoInvalido),
+                                                         ~~~~^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 100, in __init__
+    super().__init__(nombre, tarifa)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 72, in __init__
+    self.tarifa = numero(tarifa, "tarifa", Decimal("0.01"), 100000000)
+                  ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 33, in numero
+    raise DatoInvalido(f"{campo} debe ser numérico.") from causa
+modelo.DatoInvalido: tarifa debe ser numérico.
+2026-11-21 19:08:23,194 | INFO | Fin de la operación 07
+2026-11-21 19:08:23,194 | INFO | 07 [OK] Tarifa ilegible | tarifa debe ser numérico.
+2026-11-21 19:08:23,194 | INFO | Inicio 08 | Unidades faltantes
+2026-11-21 19:08:23,195 | ERROR | Operación rechazada: Unidades faltantes
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 31, in numero
+    resultado = Decimal(str(valor))
+decimal.InvalidOperation: [<class 'decimal.ConversionSyntax'>]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 22, in <lambda>
+    ("Unidades faltantes", lambda: sistema.agregar_servicio(Equipo("monitor", 9000, None)), DatoInvalido),
+                                                            ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 113, in __init__
+    self.unidades = entero(unidades, "unidades")
+                    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 42, in entero
+    valor = numero(valor, campo, 1, 10000)
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 33, in numero
+    raise DatoInvalido(f"{campo} debe ser numérico.") from causa
+modelo.DatoInvalido: unidades debe ser numérico.
+2026-11-21 19:08:23,196 | INFO | Fin de la operación 08
+2026-11-21 19:08:23,196 | INFO | 08 [OK] Unidades faltantes | unidades debe ser numérico.
+2026-11-21 19:08:23,196 | INFO | Inicio 09 | Duración cero
+2026-11-21 19:08:23,197 | ERROR | Operación rechazada: Duración cero
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 23, in <lambda>
+    ("Duración cero", lambda: sistema.reservar(clientes[0], servicios[0], 0), DatoInvalido),
+                              ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 191, in reservar
+    reserva = Reserva(cliente, servicio, horas)
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 140, in __init__
+    self.horas = numero(horas, "horas", Decimal("0.01"), 10000)
+                 ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 35, in numero
+    raise DatoInvalido(f"{campo} debe ser finito y al menos {minimo}.")
+modelo.DatoInvalido: horas debe ser finito y al menos 0.01.
+2026-11-21 19:08:23,198 | INFO | Fin de la operación 09
+2026-11-21 19:08:23,198 | INFO | 09 [OK] Duración cero | horas debe ser finito y al menos 0.01.
+2026-11-21 19:08:23,198 | INFO | Inicio 10 | Cliente sin registrar
+2026-11-21 19:08:23,198 | ERROR | Operación rechazada: Cliente sin registrar
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 24, in <lambda>
+    ("Cliente sin registrar", lambda: sistema.reservar(Cliente("999", "Leo"), servicios[0], 1), ReservaInvalida),
+                                      ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 190, in reservar
+    raise ReservaInvalida("El cliente y el servicio deben estar registrados.")
+modelo.ReservaInvalida: El cliente y el servicio deben estar registrados.
+2026-11-21 19:08:23,199 | INFO | Fin de la operación 10
+2026-11-21 19:08:23,199 | INFO | 10 [OK] Cliente sin registrar | El cliente y el servicio deben estar registrados.
+2026-11-21 19:08:23,199 | INFO | Inicio 11 | Confirmar sala
+2026-11-21 19:08:23,199 | INFO | Fin de la operación 11
+2026-11-21 19:08:23,199 | INFO | 11 [OK] Confirmar sala | Sala Norte (8 personas) | Ana | confirmada
+2026-11-21 19:08:23,200 | INFO | Inicio 12 | Sala ocupada
+2026-11-21 19:08:23,200 | ERROR | Operación rechazada: Sala ocupada
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 26, in <lambda>
+    ("Sala ocupada", lambda: sistema.reservar(clientes[0], servicios[0], 1), ServicioOcupado),
+                             ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 192, in reservar
+    reserva.confirmar()
+    ~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 146, in confirmar
+    self.servicio.ocupar(self)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 77, in ocupar
+    raise ServicioOcupado(f"{self.nombre} ya está reservado.")
+modelo.ServicioOcupado: Norte ya está reservado.
+2026-11-21 19:08:23,201 | INFO | Fin de la operación 12
+2026-11-21 19:08:23,201 | INFO | 12 [OK] Sala ocupada | Norte ya está reservado.
+2026-11-21 19:08:23,201 | INFO | Inicio 13 | Cancelar reserva
+2026-11-21 19:08:23,201 | INFO | Fin de la operación 13
+2026-11-21 19:08:23,201 | INFO | 13 [OK] Cancelar reserva | Operación completada
+2026-11-21 19:08:23,203 | INFO | Inicio 14 | Repetir cancelación
+2026-11-21 19:08:23,204 | ERROR | Operación rechazada: Repetir cancelación
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 28, in <lambda>
+    ("Repetir cancelación", lambda: reservas[0].cancelar(), ReservaInvalida),
+                                    ~~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 151, in cancelar
+    raise ReservaInvalida(f"No se puede cancelar una reserva {self.estado}.")
+modelo.ReservaInvalida: No se puede cancelar una reserva cancelada.
+2026-11-21 19:08:23,205 | INFO | Fin de la operación 14
+2026-11-21 19:08:23,205 | INFO | 14 [OK] Repetir cancelación | No se puede cancelar una reserva cancelada.
+2026-11-21 19:08:23,205 | INFO | Inicio 15 | Volver a reservar la sala
+2026-11-21 19:08:23,205 | INFO | Fin de la operación 15
+2026-11-21 19:08:23,206 | INFO | 15 [OK] Volver a reservar la sala | Sala Norte (8 personas) | Ana | confirmada
+2026-11-21 19:08:23,208 | INFO | Inicio 16 | Descuento fuera de rango
+2026-11-21 19:08:23,208 | ERROR | Operación rechazada: Descuento fuera de rango
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 30, in <lambda>
+    ("Descuento fuera de rango", lambda: reservas[1].procesar(descuento=120), DatoInvalido),
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 159, in procesar
+    total = self.servicio.calcular_costo(self.horas, **ajustes)
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 92, in calcular_costo
+    rebaja = numero(descuento, "descuento", 0, 100) / 100
+             ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 37, in numero
+    raise DatoInvalido(f"{campo} supera el máximo de {maximo}.")
+modelo.DatoInvalido: descuento supera el máximo de 100.
+2026-11-21 19:08:23,209 | INFO | Fin de la operación 16
+2026-11-21 19:08:23,209 | INFO | 16 [OK] Descuento fuera de rango | descuento supera el máximo de 100.
+2026-11-21 19:08:23,211 | INFO | Inicio 17 | Procesar sala con descuento e impuesto
+2026-11-21 19:08:23,211 | INFO | Fin de la operación 17
+2026-11-21 19:08:23,211 | INFO | 17 [OK] Procesar sala con descuento e impuesto | 42840.00
+2026-11-21 19:08:23,212 | INFO | Inicio 18 | Reservar equipos
+2026-11-21 19:08:23,212 | INFO | Fin de la operación 18
+2026-11-21 19:08:23,212 | ERROR | 18 [REVISAR] Reservar equipos | Alquiler de portátiles (2 unidades) | Ana | confirmada
+2026-11-21 19:08:23,212 | INFO | Inicio 19 | Procesar dos equipos por tres horas
+2026-11-21 19:08:23,213 | INFO | Fin de la operación 19
+2026-11-21 19:08:23,213 | INFO | 19 [OK] Procesar dos equipos por tres horas | 36000.00
+2026-11-21 19:08:23,213 | INFO | Inicio 20 | Reservar asesoría
+2026-11-21 19:08:23,213 | INFO | Fin de la operación 20
+2026-11-21 19:08:23,213 | INFO | 20 [OK] Reservar asesoría | Asesoría de redes | Ana | confirmada
+2026-11-21 19:08:23,213 | INFO | Inicio 21 | Procesar asesoría con preparación
+2026-11-21 19:08:23,213 | INFO | Fin de la operación 21
+2026-11-21 19:08:23,213 | INFO | 21 [OK] Procesar asesoría con preparación | 70000.00
+2026-11-21 19:08:23,213 | INFO | Inicio 22 | Verificar registros tras los errores
+2026-11-21 19:08:23,213 | INFO | Fin de la operación 22
+2026-11-21 19:08:23,213 | INFO | 22 [OK] Verificar registros tras los errores | (1, 3, ['cancelada', 'procesada', 'procesada', 'procesada'])
+2026-11-21 19:08:23,213 | INFO | 21/22 simulaciones verificadas.
+2026-11-21 19:11:41,476 | INFO | inicio 01 | alta de cliente
+2026-11-21 19:11:41,477 | INFO | fin de la operacion 01
+2026-11-21 19:11:41,477 | INFO | 01 [ok] alta de cliente | ana
+2026-11-21 19:11:41,477 | INFO | inicio 02 | nombre vacio
+2026-11-21 19:11:41,477 | ERROR | operacion rechazada: nombre vacio
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 16, in <lambda>
+    ("nombre vacio", lambda: sistema.registrar_cliente("102", " "), DatoInvalido),
+                             ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 176, in registrar_cliente
+    cliente = Cliente(documento, nombre)
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 59, in __init__
+    self.__nombre = texto(nombre, "nombre")
+                    ~~~~~^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 24, in texto
+    raise DatoInvalido(f"el campo {campo} es obligatorio.")
+modelo.DatoInvalido: el campo nombre es obligatorio.
+2026-11-21 19:11:41,499 | INFO | fin de la operacion 02
+2026-11-21 19:11:41,499 | INFO | 02 [ok] nombre vacio | el campo nombre es obligatorio.
+2026-11-21 19:11:41,499 | INFO | inicio 03 | documento duplicado
+2026-11-21 19:11:41,499 | ERROR | operacion rechazada: documento duplicado
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 17, in <lambda>
+    ("documento duplicado", lambda: sistema.registrar_cliente("101", "luz"), DatoInvalido),
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 178, in registrar_cliente
+    raise DatoInvalido("el documento ya esta registrado.")
+modelo.DatoInvalido: el documento ya esta registrado.
+2026-11-21 19:11:41,501 | INFO | fin de la operacion 03
+2026-11-21 19:11:41,501 | INFO | 03 [ok] documento duplicado | el documento ya esta registrado.
+2026-11-21 19:11:41,502 | INFO | inicio 04 | alta de sala
+2026-11-21 19:11:41,502 | INFO | fin de la operacion 04
+2026-11-21 19:11:41,502 | INFO | 04 [ok] alta de sala | sala norte (8 personas)
+2026-11-21 19:11:41,502 | INFO | inicio 05 | alta de equipos
+2026-11-21 19:11:41,503 | INFO | fin de la operacion 05
+2026-11-21 19:11:41,503 | INFO | 05 [ok] alta de equipos | alquiler de portatiles (2 unidades)
+2026-11-21 19:11:41,503 | INFO | inicio 06 | alta de asesoria
+2026-11-21 19:11:41,503 | INFO | fin de la operacion 06
+2026-11-21 19:11:41,503 | INFO | 06 [ok] alta de asesoria | asesoria de redes
+2026-11-21 19:11:41,503 | INFO | inicio 07 | tarifa ilegible
+2026-11-21 19:11:41,503 | ERROR | operacion rechazada: tarifa ilegible
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 31, in numero
+    resultado = Decimal(str(valor))
+decimal.InvalidOperation: [<class 'decimal.ConversionSyntax'>]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 21, in <lambda>
+    ("tarifa ilegible", lambda: sistema.agregar_servicio(Sala("sur", "abc", 5)), DatoInvalido),
+                                                         ~~~~^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 100, in __init__
+    super().__init__(nombre, tarifa)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 72, in __init__
+    self.tarifa = numero(tarifa, "tarifa", Decimal("0.01"), 100000000)
+                  ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 33, in numero
+    raise DatoInvalido(f"{campo} debe ser numerico.") from causa
+modelo.DatoInvalido: tarifa debe ser numerico.
+2026-11-21 19:11:41,505 | INFO | fin de la operacion 07
+2026-11-21 19:11:41,505 | INFO | 07 [ok] tarifa ilegible | tarifa debe ser numerico.
+2026-11-21 19:11:41,505 | INFO | inicio 08 | unidades faltantes
+2026-11-21 19:11:41,505 | ERROR | operacion rechazada: unidades faltantes
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 31, in numero
+    resultado = Decimal(str(valor))
+decimal.InvalidOperation: [<class 'decimal.ConversionSyntax'>]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 22, in <lambda>
+    ("unidades faltantes", lambda: sistema.agregar_servicio(Equipo("monitor", 9000, None)), DatoInvalido),
+                                                            ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 113, in __init__
+    self.unidades = entero(unidades, "unidades")
+                    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 42, in entero
+    valor = numero(valor, campo, 1, 10000)
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 33, in numero
+    raise DatoInvalido(f"{campo} debe ser numerico.") from causa
+modelo.DatoInvalido: unidades debe ser numerico.
+2026-11-21 19:11:41,507 | INFO | fin de la operacion 08
+2026-11-21 19:11:41,507 | INFO | 08 [ok] unidades faltantes | unidades debe ser numerico.
+2026-11-21 19:11:41,507 | INFO | inicio 09 | duracion cero
+2026-11-21 19:11:41,508 | ERROR | operacion rechazada: duracion cero
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 23, in <lambda>
+    ("duracion cero", lambda: sistema.reservar(clientes[0], servicios[0], 0), DatoInvalido),
+                              ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 191, in reservar
+    reserva = Reserva(cliente, servicio, horas)
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 140, in __init__
+    self.horas = numero(horas, "horas", Decimal("0.01"), 10000)
+                 ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 35, in numero
+    raise DatoInvalido(f"{campo} debe ser finito y al menos {minimo}.")
+modelo.DatoInvalido: horas debe ser finito y al menos 0.01.
+2026-11-21 19:11:41,509 | INFO | fin de la operacion 09
+2026-11-21 19:11:41,509 | INFO | 09 [ok] duracion cero | horas debe ser finito y al menos 0.01.
+2026-11-21 19:11:41,509 | INFO | inicio 10 | cliente sin registrar
+2026-11-21 19:11:41,509 | ERROR | operacion rechazada: cliente sin registrar
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 24, in <lambda>
+    ("cliente sin registrar", lambda: sistema.reservar(Cliente("999", "leo"), servicios[0], 1), ReservaInvalida),
+                                      ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 190, in reservar
+    raise ReservaInvalida("el cliente y el servicio deben estar registrados.")
+modelo.ReservaInvalida: el cliente y el servicio deben estar registrados.
+2026-11-21 19:11:41,510 | INFO | fin de la operacion 10
+2026-11-21 19:11:41,510 | INFO | 10 [ok] cliente sin registrar | el cliente y el servicio deben estar registrados.
+2026-11-21 19:11:41,510 | INFO | inicio 11 | confirmar sala
+2026-11-21 19:11:41,510 | INFO | fin de la operacion 11
+2026-11-21 19:11:41,510 | INFO | 11 [ok] confirmar sala | sala norte (8 personas) | ana | confirmada
+2026-11-21 19:11:41,510 | INFO | inicio 12 | sala ocupada
+2026-11-21 19:11:41,510 | ERROR | operacion rechazada: sala ocupada
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 26, in <lambda>
+    ("sala ocupada", lambda: sistema.reservar(clientes[0], servicios[0], 1), ServicioOcupado),
+                             ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 192, in reservar
+    reserva.confirmar()
+    ~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 146, in confirmar
+    self.servicio.ocupar(self)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 77, in ocupar
+    raise ServicioOcupado(f"{self.nombre} ya esta reservado.")
+modelo.ServicioOcupado: norte ya esta reservado.
+2026-11-21 19:11:41,511 | INFO | fin de la operacion 12
+2026-11-21 19:11:41,511 | INFO | 12 [ok] sala ocupada | norte ya esta reservado.
+2026-11-21 19:11:41,511 | INFO | inicio 13 | cancelar reserva
+2026-11-21 19:11:41,511 | INFO | fin de la operacion 13
+2026-11-21 19:11:41,511 | INFO | 13 [ok] cancelar reserva | operacion completada
+2026-11-21 19:11:41,511 | INFO | inicio 14 | repetir cancelacion
+2026-11-21 19:11:41,511 | ERROR | operacion rechazada: repetir cancelacion
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 28, in <lambda>
+    ("repetir cancelacion", lambda: reservas[0].cancelar(), ReservaInvalida),
+                                    ~~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 151, in cancelar
+    raise ReservaInvalida(f"no se puede cancelar una reserva {self.estado}.")
+modelo.ReservaInvalida: no se puede cancelar una reserva cancelada.
+2026-11-21 19:11:41,512 | INFO | fin de la operacion 14
+2026-11-21 19:11:41,513 | INFO | 14 [ok] repetir cancelacion | no se puede cancelar una reserva cancelada.
+2026-11-21 19:11:41,513 | INFO | inicio 15 | volver a reservar la sala
+2026-11-21 19:11:41,513 | INFO | fin de la operacion 15
+2026-11-21 19:11:41,513 | INFO | 15 [ok] volver a reservar la sala | sala norte (8 personas) | ana | confirmada
+2026-11-21 19:11:41,513 | INFO | inicio 16 | descuento fuera de rango
+2026-11-21 19:11:41,513 | ERROR | operacion rechazada: descuento fuera de rango
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 30, in <lambda>
+    ("descuento fuera de rango", lambda: reservas[1].procesar(descuento=120), DatoInvalido),
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 159, in procesar
+    total = self.servicio.calcular_costo(self.horas, **ajustes)
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 92, in calcular_costo
+    rebaja = numero(descuento, "descuento", 0, 100) / 100
+             ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 37, in numero
+    raise DatoInvalido(f"{campo} supera el maximo de {maximo}.")
+modelo.DatoInvalido: descuento supera el maximo de 100.
+2026-11-21 19:11:41,515 | INFO | fin de la operacion 16
+2026-11-21 19:11:41,515 | INFO | 16 [ok] descuento fuera de rango | descuento supera el maximo de 100.
+2026-11-21 19:11:41,515 | INFO | inicio 17 | procesar sala con descuento e impuesto
+2026-11-21 19:11:41,515 | INFO | fin de la operacion 17
+2026-11-21 19:11:41,516 | INFO | 17 [ok] procesar sala con descuento e impuesto | 42840.00
+2026-11-21 19:11:41,516 | INFO | inicio 18 | reservar equipos
+2026-11-21 19:11:41,516 | INFO | fin de la operacion 18
+2026-11-21 19:11:41,516 | INFO | 18 [ok] reservar equipos | alquiler de portatiles (2 unidades) | ana | confirmada
+2026-11-21 19:11:41,516 | INFO | inicio 19 | procesar dos equipos por tres horas
+2026-11-21 19:11:41,516 | INFO | fin de la operacion 19
+2026-11-21 19:11:41,516 | INFO | 19 [ok] procesar dos equipos por tres horas | 36000.00
+2026-11-21 19:11:41,516 | INFO | inicio 20 | reservar asesoria
+2026-11-21 19:11:41,516 | INFO | fin de la operacion 20
+2026-11-21 19:11:41,516 | INFO | 20 [ok] reservar asesoria | asesoria de redes | ana | confirmada
+2026-11-21 19:11:41,516 | INFO | inicio 21 | procesar asesoria con preparacion
+2026-11-21 19:11:41,516 | INFO | fin de la operacion 21
+2026-11-21 19:11:41,516 | INFO | 21 [ok] procesar asesoria con preparacion | 70000.00
+2026-11-21 19:11:41,517 | INFO | inicio 22 | verificar registros tras los errores
+2026-11-21 19:11:41,517 | INFO | fin de la operacion 22
+2026-11-21 19:11:41,517 | INFO | 22 [ok] verificar registros tras los errores | (1, 3, ['cancelada', 'procesada', 'procesada', 'procesada'])
+2026-11-21 19:11:41,517 | INFO | 22/22 simulaciones verificadas.
+2026-11-21 19:11:48,236 | INFO | inicio 01 | alta de cliente
+2026-11-21 19:11:48,237 | INFO | fin de la operacion 01
+2026-11-21 19:11:48,237 | INFO | 01 [ok] alta de cliente | ana
+2026-11-21 19:11:48,237 | INFO | inicio 02 | nombre vacio
+2026-11-21 19:11:48,237 | ERROR | operacion rechazada: nombre vacio
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 16, in <lambda>
+    ("nombre vacio", lambda: sistema.registrar_cliente("102", " "), DatoInvalido),
+                             ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 176, in registrar_cliente
+    cliente = Cliente(documento, nombre)
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 59, in __init__
+    self.__nombre = texto(nombre, "nombre")
+                    ~~~~~^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 24, in texto
+    raise DatoInvalido(f"el campo {campo} es obligatorio.")
+modelo.DatoInvalido: el campo nombre es obligatorio.
+2026-11-21 19:11:48,259 | INFO | fin de la operacion 02
+2026-11-21 19:11:48,259 | INFO | 02 [ok] nombre vacio | el campo nombre es obligatorio.
+2026-11-21 19:11:48,259 | INFO | inicio 03 | documento duplicado
+2026-11-21 19:11:48,259 | ERROR | operacion rechazada: documento duplicado
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 17, in <lambda>
+    ("documento duplicado", lambda: sistema.registrar_cliente("101", "luz"), DatoInvalido),
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 178, in registrar_cliente
+    raise DatoInvalido("el documento ya esta registrado.")
+modelo.DatoInvalido: el documento ya esta registrado.
+2026-11-21 19:11:48,260 | INFO | fin de la operacion 03
+2026-11-21 19:11:48,260 | INFO | 03 [ok] documento duplicado | el documento ya esta registrado.
+2026-11-21 19:11:48,260 | INFO | inicio 04 | alta de sala
+2026-11-21 19:11:48,260 | INFO | fin de la operacion 04
+2026-11-21 19:11:48,260 | INFO | 04 [ok] alta de sala | sala norte (8 personas)
+2026-11-21 19:11:48,260 | INFO | inicio 05 | alta de equipos
+2026-11-21 19:11:48,260 | INFO | fin de la operacion 05
+2026-11-21 19:11:48,261 | INFO | 05 [ok] alta de equipos | alquiler de portatiles (2 unidades)
+2026-11-21 19:11:48,261 | INFO | inicio 06 | alta de asesoria
+2026-11-21 19:11:48,261 | INFO | fin de la operacion 06
+2026-11-21 19:11:48,261 | INFO | 06 [ok] alta de asesoria | asesoria de redes
+2026-11-21 19:11:48,261 | INFO | inicio 07 | tarifa ilegible
+2026-11-21 19:11:48,261 | ERROR | operacion rechazada: tarifa ilegible
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 31, in numero
+    resultado = Decimal(str(valor))
+decimal.InvalidOperation: [<class 'decimal.ConversionSyntax'>]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 21, in <lambda>
+    ("tarifa ilegible", lambda: sistema.agregar_servicio(Sala("sur", "abc", 5)), DatoInvalido),
+                                                         ~~~~^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 100, in __init__
+    super().__init__(nombre, tarifa)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 72, in __init__
+    self.tarifa = numero(tarifa, "tarifa", Decimal("0.01"), 100000000)
+                  ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 33, in numero
+    raise DatoInvalido(f"{campo} debe ser numerico.") from causa
+modelo.DatoInvalido: tarifa debe ser numerico.
+2026-11-21 19:11:48,262 | INFO | fin de la operacion 07
+2026-11-21 19:11:48,262 | INFO | 07 [ok] tarifa ilegible | tarifa debe ser numerico.
+2026-11-21 19:11:48,262 | INFO | inicio 08 | unidades faltantes
+2026-11-21 19:11:48,262 | ERROR | operacion rechazada: unidades faltantes
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 31, in numero
+    resultado = Decimal(str(valor))
+decimal.InvalidOperation: [<class 'decimal.ConversionSyntax'>]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 22, in <lambda>
+    ("unidades faltantes", lambda: sistema.agregar_servicio(Equipo("monitor", 9000, None)), DatoInvalido),
+                                                            ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 113, in __init__
+    self.unidades = entero(unidades, "unidades")
+                    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 42, in entero
+    valor = numero(valor, campo, 1, 10000)
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 33, in numero
+    raise DatoInvalido(f"{campo} debe ser numerico.") from causa
+modelo.DatoInvalido: unidades debe ser numerico.
+2026-11-21 19:11:48,263 | INFO | fin de la operacion 08
+2026-11-21 19:11:48,263 | INFO | 08 [ok] unidades faltantes | unidades debe ser numerico.
+2026-11-21 19:11:48,263 | INFO | inicio 09 | duracion cero
+2026-11-21 19:11:48,263 | ERROR | operacion rechazada: duracion cero
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 23, in <lambda>
+    ("duracion cero", lambda: sistema.reservar(clientes[0], servicios[0], 0), DatoInvalido),
+                              ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 191, in reservar
+    reserva = Reserva(cliente, servicio, horas)
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 140, in __init__
+    self.horas = numero(horas, "horas", Decimal("0.01"), 10000)
+                 ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 35, in numero
+    raise DatoInvalido(f"{campo} debe ser finito y al menos {minimo}.")
+modelo.DatoInvalido: horas debe ser finito y al menos 0.01.
+2026-11-21 19:11:48,264 | INFO | fin de la operacion 09
+2026-11-21 19:11:48,264 | INFO | 09 [ok] duracion cero | horas debe ser finito y al menos 0.01.
+2026-11-21 19:11:48,264 | INFO | inicio 10 | cliente sin registrar
+2026-11-21 19:11:48,264 | ERROR | operacion rechazada: cliente sin registrar
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 24, in <lambda>
+    ("cliente sin registrar", lambda: sistema.reservar(Cliente("999", "leo"), servicios[0], 1), ReservaInvalida),
+                                      ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 190, in reservar
+    raise ReservaInvalida("el cliente y el servicio deben estar registrados.")
+modelo.ReservaInvalida: el cliente y el servicio deben estar registrados.
+2026-11-21 19:11:48,264 | INFO | fin de la operacion 10
+2026-11-21 19:11:48,264 | INFO | 10 [ok] cliente sin registrar | el cliente y el servicio deben estar registrados.
+2026-11-21 19:11:48,265 | INFO | inicio 11 | confirmar sala
+2026-11-21 19:11:48,265 | INFO | fin de la operacion 11
+2026-11-21 19:11:48,265 | INFO | 11 [ok] confirmar sala | sala norte (8 personas) | ana | confirmada
+2026-11-21 19:11:48,265 | INFO | inicio 12 | sala ocupada
+2026-11-21 19:11:48,265 | ERROR | operacion rechazada: sala ocupada
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 26, in <lambda>
+    ("sala ocupada", lambda: sistema.reservar(clientes[0], servicios[0], 1), ServicioOcupado),
+                             ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 192, in reservar
+    reserva.confirmar()
+    ~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 146, in confirmar
+    self.servicio.ocupar(self)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 77, in ocupar
+    raise ServicioOcupado(f"{self.nombre} ya esta reservado.")
+modelo.ServicioOcupado: norte ya esta reservado.
+2026-11-21 19:11:48,266 | INFO | fin de la operacion 12
+2026-11-21 19:11:48,266 | INFO | 12 [ok] sala ocupada | norte ya esta reservado.
+2026-11-21 19:11:48,267 | INFO | inicio 13 | cancelar reserva
+2026-11-21 19:11:48,267 | INFO | fin de la operacion 13
+2026-11-21 19:11:48,267 | INFO | 13 [ok] cancelar reserva | operacion completada
+2026-11-21 19:11:48,267 | INFO | inicio 14 | repetir cancelacion
+2026-11-21 19:11:48,267 | ERROR | operacion rechazada: repetir cancelacion
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 28, in <lambda>
+    ("repetir cancelacion", lambda: reservas[0].cancelar(), ReservaInvalida),
+                                    ~~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 151, in cancelar
+    raise ReservaInvalida(f"no se puede cancelar una reserva {self.estado}.")
+modelo.ReservaInvalida: no se puede cancelar una reserva cancelada.
+2026-11-21 19:11:48,268 | INFO | fin de la operacion 14
+2026-11-21 19:11:48,268 | INFO | 14 [ok] repetir cancelacion | no se puede cancelar una reserva cancelada.
+2026-11-21 19:11:48,268 | INFO | inicio 15 | volver a reservar la sala
+2026-11-21 19:11:48,268 | INFO | fin de la operacion 15
+2026-11-21 19:11:48,268 | INFO | 15 [ok] volver a reservar la sala | sala norte (8 personas) | ana | confirmada
+2026-11-21 19:11:48,268 | INFO | inicio 16 | descuento fuera de rango
+2026-11-21 19:11:48,268 | ERROR | operacion rechazada: descuento fuera de rango
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 30, in <lambda>
+    ("descuento fuera de rango", lambda: reservas[1].procesar(descuento=120), DatoInvalido),
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 159, in procesar
+    total = self.servicio.calcular_costo(self.horas, **ajustes)
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 92, in calcular_costo
+    rebaja = numero(descuento, "descuento", 0, 100) / 100
+             ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 37, in numero
+    raise DatoInvalido(f"{campo} supera el maximo de {maximo}.")
+modelo.DatoInvalido: descuento supera el maximo de 100.
+2026-11-21 19:11:48,269 | INFO | fin de la operacion 16
+2026-11-21 19:11:48,269 | INFO | 16 [ok] descuento fuera de rango | descuento supera el maximo de 100.
+2026-11-21 19:11:48,269 | INFO | inicio 17 | procesar sala con descuento e impuesto
+2026-11-21 19:11:48,269 | INFO | fin de la operacion 17
+2026-11-21 19:11:48,269 | INFO | 17 [ok] procesar sala con descuento e impuesto | 42840.00
+2026-11-21 19:11:48,269 | INFO | inicio 18 | reservar equipos
+2026-11-21 19:11:48,270 | INFO | fin de la operacion 18
+2026-11-21 19:11:48,270 | INFO | 18 [ok] reservar equipos | alquiler de portatiles (2 unidades) | ana | confirmada
+2026-11-21 19:11:48,270 | INFO | inicio 19 | procesar dos equipos por tres horas
+2026-11-21 19:11:48,270 | INFO | fin de la operacion 19
+2026-11-21 19:11:48,270 | INFO | 19 [ok] procesar dos equipos por tres horas | 36000.00
+2026-11-21 19:11:48,270 | INFO | inicio 20 | reservar asesoria
+2026-11-21 19:11:48,270 | INFO | fin de la operacion 20
+2026-11-21 19:11:48,270 | INFO | 20 [ok] reservar asesoria | asesoria de redes | ana | confirmada
+2026-11-21 19:11:48,270 | INFO | inicio 21 | procesar asesoria con preparacion
+2026-11-21 19:11:48,270 | INFO | fin de la operacion 21
+2026-11-21 19:11:48,270 | INFO | 21 [ok] procesar asesoria con preparacion | 70000.00
+2026-11-21 19:11:48,270 | INFO | inicio 22 | verificar registros tras los errores
+2026-11-21 19:11:48,270 | INFO | fin de la operacion 22
+2026-11-21 19:11:48,271 | INFO | 22 [ok] verificar registros tras los errores | (1, 3, ['cancelada', 'procesada', 'procesada', 'procesada'])
+2026-11-21 19:11:48,271 | INFO | 22/22 simulaciones verificadas.
+2026-11-21 19:11:56,721 | INFO | inicio 01 | alta de cliente
+2026-11-21 19:11:56,722 | INFO | fin de la operacion 01
+2026-11-21 19:11:56,722 | INFO | 01 [ok] alta de cliente | ana
+2026-11-21 19:11:56,722 | INFO | inicio 02 | nombre vacio
+2026-11-21 19:11:56,722 | ERROR | operacion rechazada: nombre vacio
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 16, in <lambda>
+    ("nombre vacio", lambda: sistema.registrar_cliente("102", " "), DatoInvalido),
+                             ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 176, in registrar_cliente
+    cliente = Cliente(documento, nombre)
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 59, in __init__
+    self.__nombre = texto(nombre, "nombre")
+                    ~~~~~^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 24, in texto
+    raise DatoInvalido(f"el campo {campo} es obligatorio.")
+modelo.DatoInvalido: el campo nombre es obligatorio.
+2026-11-21 19:11:56,743 | INFO | fin de la operacion 02
+2026-11-21 19:11:56,743 | INFO | 02 [ok] nombre vacio | el campo nombre es obligatorio.
+2026-11-21 19:11:56,743 | INFO | inicio 03 | documento duplicado
+2026-11-21 19:11:56,743 | ERROR | operacion rechazada: documento duplicado
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 17, in <lambda>
+    ("documento duplicado", lambda: sistema.registrar_cliente("101", "luz"), DatoInvalido),
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 178, in registrar_cliente
+    raise DatoInvalido("el documento ya esta registrado.")
+modelo.DatoInvalido: el documento ya esta registrado.
+2026-11-21 19:11:56,744 | INFO | fin de la operacion 03
+2026-11-21 19:11:56,744 | INFO | 03 [ok] documento duplicado | el documento ya esta registrado.
+2026-11-21 19:11:56,744 | INFO | inicio 04 | alta de sala
+2026-11-21 19:11:56,744 | INFO | fin de la operacion 04
+2026-11-21 19:11:56,744 | INFO | 04 [ok] alta de sala | sala norte (8 personas)
+2026-11-21 19:11:56,744 | INFO | inicio 05 | alta de equipos
+2026-11-21 19:11:56,744 | INFO | fin de la operacion 05
+2026-11-21 19:11:56,744 | INFO | 05 [ok] alta de equipos | alquiler de portatiles (2 unidades)
+2026-11-21 19:11:56,744 | INFO | inicio 06 | alta de asesoria
+2026-11-21 19:11:56,745 | INFO | fin de la operacion 06
+2026-11-21 19:11:56,745 | INFO | 06 [ok] alta de asesoria | asesoria de redes
+2026-11-21 19:11:56,745 | INFO | inicio 07 | tarifa ilegible
+2026-11-21 19:11:56,745 | ERROR | operacion rechazada: tarifa ilegible
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 31, in numero
+    resultado = Decimal(str(valor))
+decimal.InvalidOperation: [<class 'decimal.ConversionSyntax'>]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 21, in <lambda>
+    ("tarifa ilegible", lambda: sistema.agregar_servicio(Sala("sur", "abc", 5)), DatoInvalido),
+                                                         ~~~~^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 100, in __init__
+    super().__init__(nombre, tarifa)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 72, in __init__
+    self.tarifa = numero(tarifa, "tarifa", Decimal("0.01"), 100000000)
+                  ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 33, in numero
+    raise DatoInvalido(f"{campo} debe ser numerico.") from causa
+modelo.DatoInvalido: tarifa debe ser numerico.
+2026-11-21 19:11:56,746 | INFO | fin de la operacion 07
+2026-11-21 19:11:56,746 | INFO | 07 [ok] tarifa ilegible | tarifa debe ser numerico.
+2026-11-21 19:11:56,746 | INFO | inicio 08 | unidades faltantes
+2026-11-21 19:11:56,746 | ERROR | operacion rechazada: unidades faltantes
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 31, in numero
+    resultado = Decimal(str(valor))
+decimal.InvalidOperation: [<class 'decimal.ConversionSyntax'>]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 22, in <lambda>
+    ("unidades faltantes", lambda: sistema.agregar_servicio(Equipo("monitor", 9000, None)), DatoInvalido),
+                                                            ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 113, in __init__
+    self.unidades = entero(unidades, "unidades")
+                    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 42, in entero
+    valor = numero(valor, campo, 1, 10000)
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 33, in numero
+    raise DatoInvalido(f"{campo} debe ser numerico.") from causa
+modelo.DatoInvalido: unidades debe ser numerico.
+2026-11-21 19:11:56,747 | INFO | fin de la operacion 08
+2026-11-21 19:11:56,747 | INFO | 08 [ok] unidades faltantes | unidades debe ser numerico.
+2026-11-21 19:11:56,747 | INFO | inicio 09 | duracion cero
+2026-11-21 19:11:56,747 | ERROR | operacion rechazada: duracion cero
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 23, in <lambda>
+    ("duracion cero", lambda: sistema.reservar(clientes[0], servicios[0], 0), DatoInvalido),
+                              ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 191, in reservar
+    reserva = Reserva(cliente, servicio, horas)
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 140, in __init__
+    self.horas = numero(horas, "horas", Decimal("0.01"), 10000)
+                 ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 35, in numero
+    raise DatoInvalido(f"{campo} debe ser finito y al menos {minimo}.")
+modelo.DatoInvalido: horas debe ser finito y al menos 0.01.
+2026-11-21 19:11:56,748 | INFO | fin de la operacion 09
+2026-11-21 19:11:56,748 | INFO | 09 [ok] duracion cero | horas debe ser finito y al menos 0.01.
+2026-11-21 19:11:56,749 | INFO | inicio 10 | cliente sin registrar
+2026-11-21 19:11:56,749 | ERROR | operacion rechazada: cliente sin registrar
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 24, in <lambda>
+    ("cliente sin registrar", lambda: sistema.reservar(Cliente("999", "leo"), servicios[0], 1), ReservaInvalida),
+                                      ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 190, in reservar
+    raise ReservaInvalida("el cliente y el servicio deben estar registrados.")
+modelo.ReservaInvalida: el cliente y el servicio deben estar registrados.
+2026-11-21 19:11:56,750 | INFO | fin de la operacion 10
+2026-11-21 19:11:56,750 | INFO | 10 [ok] cliente sin registrar | el cliente y el servicio deben estar registrados.
+2026-11-21 19:11:56,750 | INFO | inicio 11 | confirmar sala
+2026-11-21 19:11:56,750 | INFO | fin de la operacion 11
+2026-11-21 19:11:56,750 | INFO | 11 [ok] confirmar sala | sala norte (8 personas) | ana | confirmada
+2026-11-21 19:11:56,750 | INFO | inicio 12 | sala ocupada
+2026-11-21 19:11:56,750 | ERROR | operacion rechazada: sala ocupada
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 26, in <lambda>
+    ("sala ocupada", lambda: sistema.reservar(clientes[0], servicios[0], 1), ServicioOcupado),
+                             ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 192, in reservar
+    reserva.confirmar()
+    ~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 146, in confirmar
+    self.servicio.ocupar(self)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 77, in ocupar
+    raise ServicioOcupado(f"{self.nombre} ya esta reservado.")
+modelo.ServicioOcupado: norte ya esta reservado.
+2026-11-21 19:11:56,752 | INFO | fin de la operacion 12
+2026-11-21 19:11:56,752 | INFO | 12 [ok] sala ocupada | norte ya esta reservado.
+2026-11-21 19:11:56,752 | INFO | inicio 13 | cancelar reserva
+2026-11-21 19:11:56,752 | INFO | fin de la operacion 13
+2026-11-21 19:11:56,752 | INFO | 13 [ok] cancelar reserva | operacion completada
+2026-11-21 19:11:56,752 | INFO | inicio 14 | repetir cancelacion
+2026-11-21 19:11:56,752 | ERROR | operacion rechazada: repetir cancelacion
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 28, in <lambda>
+    ("repetir cancelacion", lambda: reservas[0].cancelar(), ReservaInvalida),
+                                    ~~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 151, in cancelar
+    raise ReservaInvalida(f"no se puede cancelar una reserva {self.estado}.")
+modelo.ReservaInvalida: no se puede cancelar una reserva cancelada.
+2026-11-21 19:11:56,753 | INFO | fin de la operacion 14
+2026-11-21 19:11:56,753 | INFO | 14 [ok] repetir cancelacion | no se puede cancelar una reserva cancelada.
+2026-11-21 19:11:56,753 | INFO | inicio 15 | volver a reservar la sala
+2026-11-21 19:11:56,753 | INFO | fin de la operacion 15
+2026-11-21 19:11:56,753 | INFO | 15 [ok] volver a reservar la sala | sala norte (8 personas) | ana | confirmada
+2026-11-21 19:11:56,753 | INFO | inicio 16 | descuento fuera de rango
+2026-11-21 19:11:56,753 | ERROR | operacion rechazada: descuento fuera de rango
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 30, in <lambda>
+    ("descuento fuera de rango", lambda: reservas[1].procesar(descuento=120), DatoInvalido),
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 159, in procesar
+    total = self.servicio.calcular_costo(self.horas, **ajustes)
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 92, in calcular_costo
+    rebaja = numero(descuento, "descuento", 0, 100) / 100
+             ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 37, in numero
+    raise DatoInvalido(f"{campo} supera el maximo de {maximo}.")
+modelo.DatoInvalido: descuento supera el maximo de 100.
+2026-11-21 19:11:56,754 | INFO | fin de la operacion 16
+2026-11-21 19:11:56,754 | INFO | 16 [ok] descuento fuera de rango | descuento supera el maximo de 100.
+2026-11-21 19:11:56,754 | INFO | inicio 17 | procesar sala con descuento e impuesto
+2026-11-21 19:11:56,754 | INFO | fin de la operacion 17
+2026-11-21 19:11:56,754 | INFO | 17 [ok] procesar sala con descuento e impuesto | 42840.00
+2026-11-21 19:11:56,754 | INFO | inicio 18 | reservar equipos
+2026-11-21 19:11:56,754 | INFO | fin de la operacion 18
+2026-11-21 19:11:56,754 | INFO | 18 [ok] reservar equipos | alquiler de portatiles (2 unidades) | ana | confirmada
+2026-11-21 19:11:56,754 | INFO | inicio 19 | procesar dos equipos por tres horas
+2026-11-21 19:11:56,754 | INFO | fin de la operacion 19
+2026-11-21 19:11:56,755 | INFO | 19 [ok] procesar dos equipos por tres horas | 36000.00
+2026-11-21 19:11:56,755 | INFO | inicio 20 | reservar asesoria
+2026-11-21 19:11:56,755 | INFO | fin de la operacion 20
+2026-11-21 19:11:56,755 | INFO | 20 [ok] reservar asesoria | asesoria de redes | ana | confirmada
+2026-11-21 19:11:56,755 | INFO | inicio 21 | procesar asesoria con preparacion
+2026-11-21 19:11:56,755 | INFO | fin de la operacion 21
+2026-11-21 19:11:56,755 | INFO | 21 [ok] procesar asesoria con preparacion | 70000.00
+2026-11-21 19:11:56,755 | INFO | inicio 22 | verificar registros tras los errores
+2026-11-21 19:11:56,755 | INFO | fin de la operacion 22
+2026-11-21 19:11:56,756 | INFO | 22 [ok] verificar registros tras los errores | (1, 3, ['cancelada', 'procesada', 'procesada', 'procesada'])
+2026-11-21 19:11:56,756 | INFO | 22/22 simulaciones verificadas.
+2026-11-21 19:16:01,380 | INFO | inicio 01 | alta de cliente
+2026-11-21 19:16:01,380 | INFO | fin de la operacion 01
+2026-11-21 19:16:01,380 | INFO | 01 [ok] alta de cliente | ana
+2026-11-21 19:16:01,380 | INFO | inicio 02 | nombre vacio
+2026-11-21 19:16:01,380 | ERROR | operacion rechazada: nombre vacio
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 16, in <lambda>
+    ("nombre vacio", lambda: sistema.registrar_cliente("102", " "), DatoInvalido),
+                             ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 176, in registrar_cliente
+    cliente = Cliente(documento, nombre)
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 59, in __init__
+    self.__nombre = texto(nombre, "nombre")
+                    ~~~~~^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 24, in texto
+    raise DatoInvalido(f"el campo {campo} es obligatorio.")
+modelo.DatoInvalido: el campo nombre es obligatorio.
+2026-11-21 19:16:01,402 | INFO | fin de la operacion 02
+2026-11-21 19:16:01,402 | INFO | 02 [ok] nombre vacio | el campo nombre es obligatorio.
+2026-11-21 19:16:01,402 | INFO | inicio 03 | documento duplicado
+2026-11-21 19:16:01,402 | ERROR | operacion rechazada: documento duplicado
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 17, in <lambda>
+    ("documento duplicado", lambda: sistema.registrar_cliente("101", "luz"), DatoInvalido),
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 178, in registrar_cliente
+    raise DatoInvalido("el documento ya esta registrado.")
+modelo.DatoInvalido: el documento ya esta registrado.
+2026-11-21 19:16:01,403 | INFO | fin de la operacion 03
+2026-11-21 19:16:01,403 | INFO | 03 [ok] documento duplicado | el documento ya esta registrado.
+2026-11-21 19:16:01,403 | INFO | inicio 04 | alta de sala
+2026-11-21 19:16:01,403 | INFO | fin de la operacion 04
+2026-11-21 19:16:01,403 | INFO | 04 [ok] alta de sala | sala norte (8 personas)
+2026-11-21 19:16:01,403 | INFO | inicio 05 | alta de equipos
+2026-11-21 19:16:01,403 | INFO | fin de la operacion 05
+2026-11-21 19:16:01,403 | INFO | 05 [ok] alta de equipos | alquiler de portatiles (2 unidades)
+2026-11-21 19:16:01,403 | INFO | inicio 06 | alta de asesoria
+2026-11-21 19:16:01,403 | INFO | fin de la operacion 06
+2026-11-21 19:16:01,403 | INFO | 06 [ok] alta de asesoria | asesoria de redes
+2026-11-21 19:16:01,403 | INFO | inicio 07 | tarifa ilegible
+2026-11-21 19:16:01,404 | ERROR | operacion rechazada: tarifa ilegible
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 31, in numero
+    resultado = Decimal(str(valor))
+decimal.InvalidOperation: [<class 'decimal.ConversionSyntax'>]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 21, in <lambda>
+    ("tarifa ilegible", lambda: sistema.agregar_servicio(Sala("sur", "abc", 5)), DatoInvalido),
+                                                         ~~~~^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 100, in __init__
+    super().__init__(nombre, tarifa)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 72, in __init__
+    self.tarifa = numero(tarifa, "tarifa", Decimal("0.01"), 100000000)
+                  ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 33, in numero
+    raise DatoInvalido(f"{campo} debe ser numerico.") from causa
+modelo.DatoInvalido: tarifa debe ser numerico.
+2026-11-21 19:16:01,404 | INFO | fin de la operacion 07
+2026-11-21 19:16:01,404 | INFO | 07 [ok] tarifa ilegible | tarifa debe ser numerico.
+2026-11-21 19:16:01,405 | INFO | inicio 08 | unidades faltantes
+2026-11-21 19:16:01,405 | ERROR | operacion rechazada: unidades faltantes
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 31, in numero
+    resultado = Decimal(str(valor))
+decimal.InvalidOperation: [<class 'decimal.ConversionSyntax'>]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 22, in <lambda>
+    ("unidades faltantes", lambda: sistema.agregar_servicio(Equipo("monitor", 9000, None)), DatoInvalido),
+                                                            ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 113, in __init__
+    self.unidades = entero(unidades, "unidades")
+                    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 42, in entero
+    valor = numero(valor, campo, 1, 10000)
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 33, in numero
+    raise DatoInvalido(f"{campo} debe ser numerico.") from causa
+modelo.DatoInvalido: unidades debe ser numerico.
+2026-11-21 19:16:01,405 | INFO | fin de la operacion 08
+2026-11-21 19:16:01,405 | INFO | 08 [ok] unidades faltantes | unidades debe ser numerico.
+2026-11-21 19:16:01,406 | INFO | inicio 09 | duracion cero
+2026-11-21 19:16:01,406 | ERROR | operacion rechazada: duracion cero
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 23, in <lambda>
+    ("duracion cero", lambda: sistema.reservar(clientes[0], servicios[0], 0), DatoInvalido),
+                              ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 191, in reservar
+    reserva = Reserva(cliente, servicio, horas)
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 140, in __init__
+    self.horas = numero(horas, "horas", Decimal("0.01"), 10000)
+                 ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 35, in numero
+    raise DatoInvalido(f"{campo} debe ser finito y al menos {minimo}.")
+modelo.DatoInvalido: horas debe ser finito y al menos 0.01.
+2026-11-21 19:16:01,406 | INFO | fin de la operacion 09
+2026-11-21 19:16:01,406 | INFO | 09 [ok] duracion cero | horas debe ser finito y al menos 0.01.
+2026-11-21 19:16:01,406 | INFO | inicio 10 | cliente sin registrar
+2026-11-21 19:16:01,407 | ERROR | operacion rechazada: cliente sin registrar
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 24, in <lambda>
+    ("cliente sin registrar", lambda: sistema.reservar(Cliente("999", "leo"), servicios[0], 1), ReservaInvalida),
+                                      ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 190, in reservar
+    raise ReservaInvalida("el cliente y el servicio deben estar registrados.")
+modelo.ReservaInvalida: el cliente y el servicio deben estar registrados.
+2026-11-21 19:16:01,407 | INFO | fin de la operacion 10
+2026-11-21 19:16:01,407 | INFO | 10 [ok] cliente sin registrar | el cliente y el servicio deben estar registrados.
+2026-11-21 19:16:01,407 | INFO | inicio 11 | confirmar sala
+2026-11-21 19:16:01,408 | INFO | fin de la operacion 11
+2026-11-21 19:16:01,408 | INFO | 11 [ok] confirmar sala | sala norte (8 personas) | ana | confirmada
+2026-11-21 19:16:01,408 | INFO | inicio 12 | sala ocupada
+2026-11-21 19:16:01,408 | ERROR | operacion rechazada: sala ocupada
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 26, in <lambda>
+    ("sala ocupada", lambda: sistema.reservar(clientes[0], servicios[0], 1), ServicioOcupado),
+                             ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 192, in reservar
+    reserva.confirmar()
+    ~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 146, in confirmar
+    self.servicio.ocupar(self)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 77, in ocupar
+    raise ServicioOcupado(f"{self.nombre} ya esta reservado.")
+modelo.ServicioOcupado: norte ya esta reservado.
+2026-11-21 19:16:01,409 | INFO | fin de la operacion 12
+2026-11-21 19:16:01,409 | INFO | 12 [ok] sala ocupada | norte ya esta reservado.
+2026-11-21 19:16:01,409 | INFO | inicio 13 | cancelar reserva
+2026-11-21 19:16:01,409 | INFO | fin de la operacion 13
+2026-11-21 19:16:01,409 | INFO | 13 [ok] cancelar reserva | operacion completada
+2026-11-21 19:16:01,409 | INFO | inicio 14 | repetir cancelacion
+2026-11-21 19:16:01,409 | ERROR | operacion rechazada: repetir cancelacion
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 28, in <lambda>
+    ("repetir cancelacion", lambda: reservas[0].cancelar(), ReservaInvalida),
+                                    ~~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 151, in cancelar
+    raise ReservaInvalida(f"no se puede cancelar una reserva {self.estado}.")
+modelo.ReservaInvalida: no se puede cancelar una reserva cancelada.
+2026-11-21 19:16:01,410 | INFO | fin de la operacion 14
+2026-11-21 19:16:01,410 | INFO | 14 [ok] repetir cancelacion | no se puede cancelar una reserva cancelada.
+2026-11-21 19:16:01,410 | INFO | inicio 15 | volver a reservar la sala
+2026-11-21 19:16:01,410 | INFO | fin de la operacion 15
+2026-11-21 19:16:01,410 | INFO | 15 [ok] volver a reservar la sala | sala norte (8 personas) | ana | confirmada
+2026-11-21 19:16:01,411 | INFO | inicio 16 | descuento fuera de rango
+2026-11-21 19:16:01,411 | ERROR | operacion rechazada: descuento fuera de rango
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 30, in <lambda>
+    ("descuento fuera de rango", lambda: reservas[1].procesar(descuento=120), DatoInvalido),
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 159, in procesar
+    total = self.servicio.calcular_costo(self.horas, **ajustes)
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 92, in calcular_costo
+    rebaja = numero(descuento, "descuento", 0, 100) / 100
+             ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 37, in numero
+    raise DatoInvalido(f"{campo} supera el maximo de {maximo}.")
+modelo.DatoInvalido: descuento supera el maximo de 100.
+2026-11-21 19:16:01,412 | INFO | fin de la operacion 16
+2026-11-21 19:16:01,412 | INFO | 16 [ok] descuento fuera de rango | descuento supera el maximo de 100.
+2026-11-21 19:16:01,412 | INFO | inicio 17 | procesar sala con descuento e impuesto
+2026-11-21 19:16:01,412 | INFO | fin de la operacion 17
+2026-11-21 19:16:01,412 | INFO | 17 [ok] procesar sala con descuento e impuesto | 42840.00
+2026-11-21 19:16:01,412 | INFO | inicio 18 | reservar equipos
+2026-11-21 19:16:01,412 | INFO | fin de la operacion 18
+2026-11-21 19:16:01,412 | INFO | 18 [ok] reservar equipos | alquiler de portatiles (2 unidades) | ana | confirmada
+2026-11-21 19:16:01,412 | INFO | inicio 19 | procesar dos equipos por tres horas
+2026-11-21 19:16:01,412 | INFO | fin de la operacion 19
+2026-11-21 19:16:01,412 | INFO | 19 [ok] procesar dos equipos por tres horas | 36000.00
+2026-11-21 19:16:01,412 | INFO | inicio 20 | reservar asesoria
+2026-11-21 19:16:01,412 | INFO | fin de la operacion 20
+2026-11-21 19:16:01,412 | INFO | 20 [ok] reservar asesoria | asesoria de redes | ana | confirmada
+2026-11-21 19:16:01,412 | INFO | inicio 21 | procesar asesoria con preparacion
+2026-11-21 19:16:01,412 | INFO | fin de la operacion 21
+2026-11-21 19:16:01,412 | INFO | 21 [ok] procesar asesoria con preparacion | 70000.00
+2026-11-21 19:16:01,413 | INFO | inicio 22 | verificar registros tras los errores
+2026-11-21 19:16:01,413 | INFO | fin de la operacion 22
+2026-11-21 19:16:01,413 | INFO | 22 [ok] verificar registros tras los errores | (1, 3, ['cancelada', 'procesada', 'procesada', 'procesada'])
+2026-11-21 19:16:01,413 | INFO | 22/22 simulaciones verificadas.
+2026-11-21 19:21:10,799 | INFO | inicio 01 | alta de cliente
+2026-11-21 19:21:10,799 | INFO | fin de la operacion 01
+2026-11-21 19:21:10,800 | INFO | 01 [ok] alta de cliente | ana
+2026-11-21 19:21:10,800 | INFO | inicio 02 | nombre vacio
+2026-11-21 19:21:10,800 | ERROR | operacion rechazada: nombre vacio
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 16, in <lambda>
+    ("nombre vacio", lambda: sistema.registrar_cliente("102", " "), DatoInvalido),
+                             ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 200, in registrar_cliente
+    cliente = Cliente(documento, nombre)
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 62, in __init__
+    self.__nombre = texto(nombre, "nombre")
+                    ~~~~~^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 25, in texto
+    raise DatoInvalido(f"el campo {campo} es obligatorio.")
+modelo.DatoInvalido: el campo nombre es obligatorio.
+2026-11-21 19:21:10,819 | INFO | fin de la operacion 02
+2026-11-21 19:21:10,820 | INFO | 02 [ok] nombre vacio | el campo nombre es obligatorio.
+2026-11-21 19:21:10,820 | INFO | inicio 03 | documento duplicado
+2026-11-21 19:21:10,820 | ERROR | operacion rechazada: documento duplicado
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 17, in <lambda>
+    ("documento duplicado", lambda: sistema.registrar_cliente("101", "luz"), DatoInvalido),
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 202, in registrar_cliente
+    raise DatoInvalido("el documento ya esta registrado.")
+modelo.DatoInvalido: el documento ya esta registrado.
+2026-11-21 19:21:10,820 | INFO | fin de la operacion 03
+2026-11-21 19:21:10,820 | INFO | 03 [ok] documento duplicado | el documento ya esta registrado.
+2026-11-21 19:21:10,821 | INFO | inicio 04 | alta de sala
+2026-11-21 19:21:10,821 | INFO | fin de la operacion 04
+2026-11-21 19:21:10,821 | INFO | 04 [ok] alta de sala | sala norte (8 personas)
+2026-11-21 19:21:10,821 | INFO | inicio 05 | alta de equipos
+2026-11-21 19:21:10,821 | INFO | fin de la operacion 05
+2026-11-21 19:21:10,821 | INFO | 05 [ok] alta de equipos | alquiler de portatiles (2 unidades)
+2026-11-21 19:21:10,821 | INFO | inicio 06 | alta de asesoria
+2026-11-21 19:21:10,821 | INFO | fin de la operacion 06
+2026-11-21 19:21:10,821 | INFO | 06 [ok] alta de asesoria | asesoria de redes
+2026-11-21 19:21:10,821 | INFO | inicio 07 | tarifa ilegible
+2026-11-21 19:21:10,822 | ERROR | operacion rechazada: tarifa ilegible
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 32, in numero
+    resultado = Decimal(str(valor))
+decimal.InvalidOperation: [<class 'decimal.ConversionSyntax'>]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 21, in <lambda>
+    ("tarifa ilegible", lambda: sistema.agregar_servicio(Sala("sur", "abc", 5)), DatoInvalido),
+                                                         ~~~~^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 109, in __init__
+    super().__init__(nombre, tarifa)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 78, in __init__
+    self.tarifa = numero(tarifa, "tarifa", Decimal("0.01"), 100000000)
+                  ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 34, in numero
+    raise DatoInvalido(f"{campo} debe ser numerico.") from causa
+modelo.DatoInvalido: tarifa debe ser numerico.
+2026-11-21 19:21:10,823 | INFO | fin de la operacion 07
+2026-11-21 19:21:10,823 | INFO | 07 [ok] tarifa ilegible | tarifa debe ser numerico.
+2026-11-21 19:21:10,823 | INFO | inicio 08 | unidades faltantes
+2026-11-21 19:21:10,823 | ERROR | operacion rechazada: unidades faltantes
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 32, in numero
+    resultado = Decimal(str(valor))
+decimal.InvalidOperation: [<class 'decimal.ConversionSyntax'>]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 22, in <lambda>
+    ("unidades faltantes", lambda: sistema.agregar_servicio(Equipo("monitor", 9000, None)), DatoInvalido),
+                                                            ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 125, in __init__
+    self.unidades = entero(unidades, "unidades")
+                    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 44, in entero
+    valor = numero(valor, campo, 1, 10000)
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 34, in numero
+    raise DatoInvalido(f"{campo} debe ser numerico.") from causa
+modelo.DatoInvalido: unidades debe ser numerico.
+2026-11-21 19:21:10,825 | INFO | fin de la operacion 08
+2026-11-21 19:21:10,825 | INFO | 08 [ok] unidades faltantes | unidades debe ser numerico.
+2026-11-21 19:21:10,826 | INFO | inicio 09 | duracion cero
+2026-11-21 19:21:10,826 | ERROR | operacion rechazada: duracion cero
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 23, in <lambda>
+    ("duracion cero", lambda: sistema.reservar(clientes[0], servicios[0], 0), DatoInvalido),
+                              ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 217, in reservar
+    reserva = Reserva(cliente, servicio, horas)
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 158, in __init__
+    self.horas = numero(horas, "horas", Decimal("0.01"), 10000)
+                 ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 36, in numero
+    raise DatoInvalido(f"{campo} debe ser finito y al menos {minimo}.")
+modelo.DatoInvalido: horas debe ser finito y al menos 0.01.
+2026-11-21 19:21:10,827 | INFO | fin de la operacion 09
+2026-11-21 19:21:10,827 | INFO | 09 [ok] duracion cero | horas debe ser finito y al menos 0.01.
+2026-11-21 19:21:10,827 | INFO | inicio 10 | cliente sin registrar
+2026-11-21 19:21:10,827 | ERROR | operacion rechazada: cliente sin registrar
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 24, in <lambda>
+    ("cliente sin registrar", lambda: sistema.reservar(Cliente("999", "leo"), servicios[0], 1), ReservaInvalida),
+                                      ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 216, in reservar
+    raise ReservaInvalida("el cliente y el servicio deben estar registrados.")
+modelo.ReservaInvalida: el cliente y el servicio deben estar registrados.
+2026-11-21 19:21:10,828 | INFO | fin de la operacion 10
+2026-11-21 19:21:10,828 | INFO | 10 [ok] cliente sin registrar | el cliente y el servicio deben estar registrados.
+2026-11-21 19:21:10,828 | INFO | inicio 11 | confirmar sala
+2026-11-21 19:21:10,828 | INFO | fin de la operacion 11
+2026-11-21 19:21:10,828 | INFO | 11 [ok] confirmar sala | sala norte (8 personas) | ana | confirmada
+2026-11-21 19:21:10,828 | INFO | inicio 12 | sala ocupada
+2026-11-21 19:21:10,828 | ERROR | operacion rechazada: sala ocupada
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 26, in <lambda>
+    ("sala ocupada", lambda: sistema.reservar(clientes[0], servicios[0], 1), ServicioOcupado),
+                             ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 218, in reservar
+    reserva.confirmar()
+    ~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 165, in confirmar
+    self.servicio.ocupar(self)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 84, in ocupar
+    raise ServicioOcupado(f"{self.nombre} ya esta reservado.")
+modelo.ServicioOcupado: norte ya esta reservado.
+2026-11-21 19:21:10,829 | INFO | fin de la operacion 12
+2026-11-21 19:21:10,829 | INFO | 12 [ok] sala ocupada | norte ya esta reservado.
+2026-11-21 19:21:10,829 | INFO | inicio 13 | cancelar reserva
+2026-11-21 19:21:10,829 | INFO | fin de la operacion 13
+2026-11-21 19:21:10,829 | INFO | 13 [ok] cancelar reserva | operacion completada
+2026-11-21 19:21:10,829 | INFO | inicio 14 | repetir cancelacion
+2026-11-21 19:21:10,829 | ERROR | operacion rechazada: repetir cancelacion
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 28, in <lambda>
+    ("repetir cancelacion", lambda: reservas[0].cancelar(), ReservaInvalida),
+                                    ~~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 171, in cancelar
+    raise ReservaInvalida(f"no se puede cancelar una reserva {self.estado}.")
+modelo.ReservaInvalida: no se puede cancelar una reserva cancelada.
+2026-11-21 19:21:10,830 | INFO | fin de la operacion 14
+2026-11-21 19:21:10,830 | INFO | 14 [ok] repetir cancelacion | no se puede cancelar una reserva cancelada.
+2026-11-21 19:21:10,830 | INFO | inicio 15 | volver a reservar la sala
+2026-11-21 19:21:10,830 | INFO | fin de la operacion 15
+2026-11-21 19:21:10,830 | INFO | 15 [ok] volver a reservar la sala | sala norte (8 personas) | ana | confirmada
+2026-11-21 19:21:10,830 | INFO | inicio 16 | descuento fuera de rango
+2026-11-21 19:21:10,830 | ERROR | operacion rechazada: descuento fuera de rango
+Traceback (most recent call last):
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 43, in simular
+    resultado = accion()
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\main.py", line 30, in <lambda>
+    ("descuento fuera de rango", lambda: reservas[1].procesar(descuento=120), DatoInvalido),
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 180, in procesar
+    total = self.servicio.calcular_costo(self.horas, **ajustes)
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 100, in calcular_costo
+    rebaja = numero(descuento, "descuento", 0, 100) / 100
+             ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\PC\Downloads\Software_FJ_Fase4\Software-FJ\modelo.py", line 38, in numero
+    raise DatoInvalido(f"{campo} supera el maximo de {maximo}.")
+modelo.DatoInvalido: descuento supera el maximo de 100.
+2026-11-21 19:21:10,831 | INFO | fin de la operacion 16
+2026-11-21 19:21:10,831 | INFO | 16 [ok] descuento fuera de rango | descuento supera el maximo de 100.
+2026-11-21 19:21:10,831 | INFO | inicio 17 | procesar sala con descuento e impuesto
+2026-11-21 19:21:10,831 | INFO | fin de la operacion 17
+2026-11-21 19:21:10,831 | INFO | 17 [ok] procesar sala con descuento e impuesto | 42840.00
+2026-11-21 19:21:10,831 | INFO | inicio 18 | reservar equipos
+2026-11-21 19:21:10,831 | INFO | fin de la operacion 18
+2026-11-21 19:21:10,831 | INFO | 18 [ok] reservar equipos | alquiler de portatiles (2 unidades) | ana | confirmada
+2026-11-21 19:21:10,831 | INFO | inicio 19 | procesar dos equipos por tres horas
+2026-11-21 19:21:10,831 | INFO | fin de la operacion 19
+2026-11-21 19:21:10,831 | INFO | 19 [ok] procesar dos equipos por tres horas | 36000.00
+2026-11-21 19:21:10,831 | INFO | inicio 20 | reservar asesoria
+2026-11-21 19:21:10,831 | INFO | fin de la operacion 20
+2026-11-21 19:21:10,831 | INFO | 20 [ok] reservar asesoria | asesoria de redes | ana | confirmada
+2026-11-21 19:21:10,832 | INFO | inicio 21 | procesar asesoria con preparacion
+2026-11-21 19:21:10,832 | INFO | fin de la operacion 21
+2026-11-21 19:21:10,832 | INFO | 21 [ok] procesar asesoria con preparacion | 70000.00
+2026-11-21 19:21:10,832 | INFO | inicio 22 | verificar registros tras los errores
+2026-11-21 19:21:10,832 | INFO | fin de la operacion 22
+2026-11-21 19:21:10,832 | INFO | 22 [ok] verificar registros tras los errores | (1, 3, ['cancelada', 'procesada', 'procesada', 'procesada'])
+2026-11-21 19:21:10,832 | INFO | 22/22 simulaciones verificadas.
